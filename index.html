@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>LOGIKOS - Belajar Matematika Logis</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER FULL WIDTH -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-top">
+          <h1 class="logo">LOGIKOS<span class="logo-dot">.</span></h1>
+          <nav class="main-nav">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#" class="nav-link">Teori</a>
+            <a href="#" class="nav-link">Kalkulator</a>
+            <div class="dropdown">
+              <span class="nav-link">Penghitungan Pengukuran Aproksimasi</span>
+              <img class="dropdown-arrow" src="img/dropdown-arrow.svg" alt="dropdown" />
+            </div>
+          </nav>
+        </div>
+        <div class="hero">
+          <div class="hero-text">
+            <h2>Hi, Math`Lovers..</h2>
+            <p>Let's study with me!</p>
+          </div>
+          <img class="blackboard-img" src="img/blackboard-formulas.png" alt="Blackboard with formulas" />
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="container">
+     <!-- Ganti bagian main content yang ada dengan ini: -->
+<main>
+  <section class="intro-section">
+    <h2 class="section-title">-APROKSIMASI KESALAHAN-</h2>
+    
+    <div class="intro-content">
+      <div class="intro-card">
+        <p class="intro-text">
+          Halo Math Lovers! 👋<br />
+          Sebelum kita mulai pakai kalkulator atau belajar rumus-rumus, yuk kita pahami dulu:<br />
+          Sebenarnya... kenapa sih dalam pengukuran bisa ada yang namanya pembulatan dan kesalahan?
+        </p>
+      </div>
+      
+      <div class="card">
+        <h3>Apa sih itu Aproksimasi ??</h3>
+        <div class="card-content">
+          <p>
+            Pernah nggak kamu nemu angka kayak 3.1415926535... dan mikir, "ini kapan selesainya?"<br />
+            Nah, aproksimasi itu solusi buat bikin angka ribet jadi lebih sederhana dan gampang dipahami.
+            Misalnya:<br /><br />
+            π (pi) = 3.141592... → dibulatkan aja jadi 3.14 atau 22/7<br />
+            9.8 m/s² (gravitasi) → kadang dipakai 10 biar gampang hitungnya<br /><br />
+            Jadi, aproksimasi = pendekatan, bukan ngawur ya 😉
+          </p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>Kenapa Penting Banget?</h3>
+        <div class="card-content">
+          <p>
+            Karena ngerti seberapa besar & gimana jenis kesalahan aproksimasi itu bisa bantu kita buat:<br />
+            ✅ Ngecek <strong>seakurat</strong> apa cara hitung kita.<br />
+            ✅ Milih <strong>metode</strong> yang paling cepet & efisien.<br />
+            ✅ Nentuin <strong>batas</strong> "masih bisa ditolerir" dalam analisis atau simulasi.<br /><br />
+            Gampangnya? Biar kerjaan kita makin tepat sasaran, nggak asal kira-kira doang! 🎯💡
+          </p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>Apa yang akan kita pelajari ?</h3>
+        <div class="card-content">
+          <p>
+            Di materi ini, kamu bakal nemuin:<br /><br />
+            ✔️ Pembulatan angka (ke satuan, desimal, atau angka penting)<br />
+            ✔️ Kesalahan dalam pengukuran<br />
+            ✔️ Cara menghitung hasil operasi pengukuran yang melibatkan kesalahan<br />
+            ✔️ Dan... apa itu toleransi kesalahan!<br /><br />
+            Tenang, semua ada contohnya, tinggal klik bagian materinya ya 😄
+          </p>
+        </div>
+      </div>
+      
+      <p class="outro-text">
+        Intinya, jangan takut sama angka panjang atau rumus, karena tujuan kita: ngerti konsepnya, bisa
+        ngitung, dan nggak gampang tertipu sama angka-angka 👨‍🏫📏
+      </p>
+    </div>
+  </section>
+
+  <section class="learning-section">
+    <div class="learning-tabs">
+      <button class="tab-button active">Pembulatan</button>
+      <button class="tab-button">Analisis Kesalahan</button>
+      <button class="tab-button">Operasi Pengukuran</button>
+    </div>
+    
+    <div class="learning-content">
+      <div class="content-left">
+        <h3>Pembulatan Bilangan</h3>
+        
+        <div class="learning-card">
+          <h4>Kesatuan Terdekat</h4>
+          <p>Membulatkan ke bilangan terdekat</p>
+          <div class="card-detail">
+            <p>
+              Jika digit pertama setelah koma lebih besar dari 5 maka dibulatkan ke atas.<br />
+              Jika lebih kecil dari 5 maka dibulatkan ke bawah.
+            </p>
+          </div>
+        </div>
+        
+        <div class="learning-card">
+          <h4>Ke Desimal Tertentu</h4>
+          <p>Membulatkan ke jumlah digit desimal tertentu</p>
+          <div class="card-detail">
+            <p>
+              Lihat digit setelah posisi desimal yang diinginkan<br />
+              Gunakan aturan pembulatan standar
+            </p>
+          </div>
+        </div>
+        
+        <div class="learning-card">
+          <h4>Ke Angka Penting</h4>
+          <p>Membulatkan ke jumlah digit yang signifikan</p>
+          <div class="card-detail">
+            <p>
+              Digit bukan nol selalu signifikan<br />
+              Nol di antara digit signifikan adalah signifikan<br />
+              Nol di akhir dan setelah koma desimal adalah signifikan
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="content-right">
+        <h3>Kalkulator Pembulatan</h3>
+        
+        <div class="calculator">
+          <div class="input-group">
+            <input type="text" placeholder="Masukan Bilangan" class="calculator-input" />
+          </div>
+          
+          <div class="input-group">
+            <select class="calculator-select">
+              <option id="kesatuanTerdekat">Kesatuan Terdekat</option>
+              <option id="keDesimalTertentu">Ke Desimal Tertentu</option>
+              <option id="keAngkaPenting">Ke Angka Penting</option>
+            </select>
+          </div>
+          
+          <button class="calculate-button">Hitung</button>
+          
+          <div class="result-group">
+            <p>Hasil :</p>
+            <div class="result-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- FOOTER FULL WIDTH -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-content">
+          <div class="footer-about">
+            <h3 class="footer-logo">LOGIKOS<span class="logo-dot">.</span></h3>
+            <p>
+              LOGIKOS adalah tempat belajar matematika yang anti ngebosenin. Di sini, kita bahas materi dengan cara yang
+              nggak ribet, dan gampang dipahami. Karena belajar itu harus logis dan seru!
+            </p>
+          </div>
+          <div class="footer-links">
+            <h4>On This Site</h4>
+            <a href="#">Home</a>
+            <a href="#">Teori</a>
+            <a href="#">Kalkulator</a>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <div class="contact-item">
+              <img src="img/Location.svg" alt="location" />
+              <span>Foerda Lab RPL 2</span>
+            </div>
+            <div class="contact-item">
+              <img src="img/Phone.svg" alt="phone" />
+              <span>08201832214125</span>
+            </div>
+            <div class="contact-item">
+              <img src="img/email.svg" alt="email" />
+              <input type="email" placeholder="logikos.62@gmail.com" readonly />
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="divider-line"></div>
+          <p>© 2025 LOGIKOS – Learn Math Through Logic.. All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

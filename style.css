@@ -1,0 +1,581 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Barlow:400,500,700,600|Inter:800,500,400,600|MuseoModerno:300,400|Montagu+Slab:500|Poppins:500,700,400");
+
+:root {
+  --primary-color: #8a38f5;
+  --primary-dark: #31046d;
+  --secondary-color: #e789f4;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #d9d9d9;
+  --dark-bg: #262626;
+  --text-light: #ffffff;
+  --text-dark: #000000;
+  --card-shadow: 0 4px 24px rgba(49, 4, 109, 0.08);
+  --highlight-bg: #f3eaff;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Barlow', sans-serif;
+  background-color: var(--white);
+  color: var(--text-dark);
+}
+
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px; /* Tambahkan padding agar konten tidak mepet pinggir */
+}
+
+/* MAIN CONTENT STYLES */
+.intro-section, .learning-section {
+  background-color: white;
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 24px rgba(49, 4, 109, 0.08);
+}
+
+.section-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.intro-card {
+  background-color: white;
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.intro-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.card {
+  background-color: rgba(172, 132, 225, 0.15);
+  border-left: 5px solid var(--primary-color);
+  border-radius: 0 20px 0 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.card h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+}
+
+.card-content {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.card-content strong {
+  color: var(--primary-color);
+}
+
+.outro-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* LEARNING SECTION */
+.learning-tabs {
+  display: flex;
+  background-color: var(--gray);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  background: none;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--black);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tab-button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.learning-content {
+  display: flex;
+  gap: 40px;
+}
+
+.content-left {
+  flex: 1;
+}
+
+.content-left h3 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--primary-dark);
+  margin-bottom: 24px;
+}
+
+.learning-card {
+  margin-bottom: 32px;
+}
+
+.learning-card h4 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.learning-card p {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.card-detail {
+  background-color: #f5f0f0;
+  border-left: 5px solid var(--black);
+  border-radius: 0 20px 0 20px;
+  padding: 16px;
+}
+
+.card-detail p {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.divider {
+  width: 2px;
+  background-color: #c4bdbd;
+}
+
+.content-right {
+  flex: 1;
+}
+
+.content-right h3 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--primary-dark);
+  margin-bottom: 24px;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  position: relative;
+}
+
+.calculator-input, .calculator-select {
+  width: 100%;
+  padding: 14px 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  background-color: white;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+}
+
+.calculate-button {
+  padding: 14px 28px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s;
+}
+
+.calculate-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.result-group {
+  margin-top: 20px;
+}
+
+.result-group p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.result-box {
+  height: 120px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+/* HEADER FULL WIDTH */
+.header {
+  width: 100vw;
+  background: linear-gradient(270deg, rgba(89, 29, 169, 0.7) 0%, rgba(5, 25, 96, 1) 100%);
+  border-radius: 0 0 80px 80px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 40px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 32px 0 32px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: 'MuseoModerno', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.logo-dot {
+  font-family: 'Montagu Slab', serif;
+  color: var(--secondary-color);
+}
+
+.main-nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--white);
+  transition: color 0.3s;
+  position: relative;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--secondary-color);
+  background: rgba(255,255,255,0.08);
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  width: 18px;
+  height: 18px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0 0 0;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  max-width: 600px;
+  z-index: 1;
+}
+
+.hero-text h2 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  color: var(--white);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(49,4,109,0.12);
+}
+
+.hero-text p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--white);
+  background: var(--highlight-bg);
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.blackboard-img {
+  width: 420px;
+  max-width: 90vw;
+  height: auto;
+  z-index: 1;
+  box-shadow: var(--card-shadow);
+  border-radius: 24px;
+}
+
+/* FOOTER FULL WIDTH */
+.footer {
+  width: 100vw;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  margin-top: 60px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 32px 0 32px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.footer-about {
+  max-width: 420px;
+}
+
+.footer-logo {
+  font-family: 'MuseoModerno', sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.footer-about p {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.footer-links {
+  min-width: 180px;
+}
+
+.footer-links h4, .footer-contact h4 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.footer-links a {
+  display: block;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--secondary-color);
+}
+
+.footer-contact {
+  min-width: 220px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.contact-item img {
+  width: 26px;
+  height: 26px;
+}
+
+.contact-item input {
+  background: transparent;
+  border: none;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text-light);
+  width: 180px;
+}
+
+.divider-line {
+  width: 100%;
+  height: 2px;
+  background-color: #c2c2c2;
+  margin-bottom: 12px;
+  border-radius: 2px;
+  opacity: 0.2;
+}
+
+.footer-bottom p {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #e0e0e0;
+  margin-bottom: 0;
+  padding-bottom: 24px;
+}
+
+.footer-bottom span {
+  font-family: 'MuseoModerno', sans-serif;
+  font-weight: 300;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .header-inner, .footer-inner {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .footer-content {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-top, .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .main-nav {
+    gap: 18px;
+  }
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .footer-inner {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner, .footer-inner {
+    padding: 10px 4px 0 4px;
+  }
+  .logo {
+    font-size: 28px;
+  }
+  .footer-logo {
+    font-size: 22px;
+  }
+  .footer-links h4, .footer-contact h4 {
+    font-size: 16px;
+  }
+  .footer-links a, .footer-about p, .footer-bottom p {
+    font-size: 12px;
+  }
+  .contact-item input {
+    font-size: 12px;
+    width: 120px;
+  }
+  .blackboard-img {
+    width: 90vw;
+    max-width: 260px;
+  }
+  .hero-text h2 {
+    font-size: 28px;
+  }
+  .hero-text p {
+    font-size: 14px;
+    padding: 2px 8px;
+  }
+}
