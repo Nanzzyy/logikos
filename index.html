@@ -99,60 +99,58 @@
 
   <section class="learning-section">
     <div class="learning-tabs">
-      <button class="tab-button active">Pembulatan</button>
-      <button class="tab-button">Analisis Kesalahan</button>
-      <button class="tab-button">Operasi Pengukuran</button>
+      <button class="tab-button active" data-tab="pembulatan">Pembulatan</button>
+      <button class="tab-button" data-tab="kesalahan">Analisis Kesalahan</button>
+      <button class="tab-button" data-tab="operasi">Operasi Pengukuran</button>
     </div>
     
     <div class="learning-content">
-      <div class="content-left">
-        <h3>Pembulatan Bilangan</h3>
-        
-        <div class="learning-card">
-          <h4>Kesatuan Terdekat</h4>
-          <p>Membulatkan ke bilangan terdekat</p>
-          <div class="card-detail">
-            <p>
-              Jika digit pertama setelah koma lebih besar dari 5 maka dibulatkan ke atas.<br />
-              Jika lebih kecil dari 5 maka dibulatkan ke bawah.
-            </p>
-          </div>
-        </div>
-        
-        <div class="learning-card">
-          <h4>Ke Desimal Tertentu</h4>
-          <p>Membulatkan ke jumlah digit desimal tertentu</p>
-          <div class="card-detail">
-            <p>
-              Lihat digit setelah posisi desimal yang diinginkan<br />
-              Gunakan aturan pembulatan standar
-            </p>
-          </div>
-        </div>
-        
-        <div class="learning-card">
-          <h4>Ke Angka Penting</h4>
-          <p>Membulatkan ke jumlah digit yang signifikan</p>
-          <div class="card-detail">
-            <p>
-              Digit bukan nol selalu signifikan<br />
-              Nol di antara digit signifikan adalah signifikan<br />
-              Nol di akhir dan setelah koma desimal adalah signifikan
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="divider"></div>
-      
-      <div class="content-right">
-        <h3>Kalkulator Pembulatan</h3>
-        
-        <div class="calculator">
-          <div class="input-group">
-            <input type="text" placeholder="Masukan Bilangan" class="calculator-input" />
+      <div class="tab-content active" data-tab="pembulatan">
+        <div class="content-left">
+          <h3>Pembulatan Bilangan</h3>
+          
+          <div class="learning-card">
+            <h4>Kesatuan Terdekat</h4>
+            <p>Membulatkan ke bilangan terdekat</p>
+            <div class="card-detail">
+              <p>
+                Jika digit pertama setelah koma lebih besar dari 5 maka dibulatkan ke atas.<br />
+                Jika lebih kecil dari 5 maka dibulatkan ke bawah.
+              </p>
+            </div>
           </div>
           
+          <div class="learning-card">
+            <h4>Ke Desimal Tertentu</h4>
+            <p>Membulatkan ke jumlah digit desimal tertentu</p>
+            <div class="card-detail">
+              <p>
+                Lihat digit setelah posisi desimal yang diinginkan<br />
+                Gunakan aturan pembulatan standar
+              </p>
+            </div>
+          </div>
+          
+          <div class="learning-card">
+            <h4>Ke Angka Penting</h4>
+            <p>Membulatkan ke jumlah digit yang signifikan</p>
+            <div class="card-detail">
+              <p>
+                Digit bukan nol selalu signifikan<br />
+                Nol di antara digit signifikan adalah signifikan<br />
+                Nol di akhir dan setelah koma desimal adalah signifikan
+              </p>
+            </div>
+          </div>
+        </div>
+      
+      
+        <div class="divider"></div>
+        
+        <div class="content-right">
+          <h3>Kalkulator Pembulatan</h3>
+          
+<<<<<<< HEAD
           <div class="input-group">
             <select class="calculator-select">
               <option id="kesatuanTerdekat">Kesatuan Terdekat</option>
@@ -168,8 +166,90 @@
           <div class="result-group">
             <p>Hasil :</p>
             <div class="result-box"></div>
+=======
+          <div class="calculator">
+            <div class="input-group">
+              <input type="text" placeholder="Masukan Bilangan" class="calculator-input" />
+            </div>
+            
+            <div class="input-group">
+              <select class="calculator-select">
+                <option id="kesatuanTerdekat">Kesatuan Terdekat</option>
+                <option id="keDesimalTertentu">Ke Desimal Tertentu</option>
+                <option id="keAngkaPenting">Ke Angka Penting</option>
+              </select>
+            </div>
+            
+            <button class="calculate-button">Hitung</button>
+            
+            <div class="result-group">
+              <p>Hasil :</p>
+              <div class="result-box"></div>
+            </div>
+>>>>>>> 23ef950daa33680ea45e14e3c5fb340f771780a9
           </div>
         </div>
+      </div> 
+      
+      <div class="tab-content" data-tab="kesalahan">
+        <div class="content-left">
+                <h3>Analisis Kesalahan</h3>
+                
+                <div class="learning-card">
+                <h4>Salah Mutlak</h4>
+                <p>Kesalahan terbesar yang terjadi pada hasil pengukuran dengan menggunakan alat ukur tertentu </p>
+                <div class="card-detail">
+                    <p>
+                    Salah Mutlak = 1/2 X satuan ukuran terkecil.<br>
+                    Satuan Ukuran Terkecil = 1/10^jumlah desimal.
+                    </p>
+                </div>
+                </div>
+                
+                <div class="learning-card">
+                <h4>Salah Relatif</h4>
+                <p>Hasil salah mutlak di bagi dengan hasil pengukuran</p>
+                <div class="card-detail">
+                    <p>
+                    Salah Relatif = salah mutlak/hasil pengukuran
+                    </p>
+                </div>
+                </div>
+                
+                <div class="learning-card">
+                <h4>Persentase Kesalahan</h4>
+                <p>Hasil salah relatif kali 100%</p>
+                <div class="card-detail">
+                    <p>
+                    Persentase Kesalahan = salah relatif X 100%
+                    </p>
+                </div>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="content-right">
+                <h3>Kalkulator Kesalahan</h3>
+                
+                <div class="calculator">
+                <div class="input-group">
+                    <input type="number" placeholder="Masukan Bilangan ke-1" class="kesalahan-input" />
+                    
+                </div>
+
+                <div class="input-group">
+                  <input type="number" placeholder="Masukan Bilangan ke-2" class="kesalahan-input2">
+                </div>
+                    
+                <button class="calculate-button" onclick="hitungKesalahan()">Hitung</button>
+                
+                <div class="result-group">
+                    <p>Hasil :</p>
+                    <div class="kesalahan-result-box"></div>
+                </div>
+                </div>
+            </div>
       </div>
     </div>
   </section>
