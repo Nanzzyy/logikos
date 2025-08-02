@@ -15,26 +15,28 @@ function keSatuanTerdekat(nilai) {
         return Number(bil) + 1;
     } else {
         return Number(bil);
-    };
+    }
 }
+
 function keDesimalTertentu(nilai, desimal) {
     let rasio = nilai / desimal;
     let strRasio = rasio.toString();
     let bagianBulat = " ";
     let bagiandesimal = 0;
     if (strRasio.includes(".")) {
-        letBagian = strRasio.split(".");
+        let bagian = strRasio.split(".");
         bagianBulat = bagian[0]; // bagian depan titik
         bagiandesimal = Number("0." + bagian[1]); // bagian setelah titik
     } else {
         bagianBulat = strRasio; // sudah bulat
-        bagianDesimal= 0;
-    } 
+        bagiandesimal = 0;
+    }
     if (bagiandesimal >= 0.5) {
         return (Number(bagianBulat) + 1) * desimal;
     } else {
-        return Number(bagianBulat) * desimal;}
+        return Number(bagianBulat) * desimal;
     }
+}
 
 // Tampilkan input dinamis saat opsi berubah
 document.querySelector('.calculator-select').addEventListener('change', function() {
@@ -73,38 +75,38 @@ document.querySelector('.calculate-button').addEventListener('click', function()
     if (resultBox) resultBox.textContent = hasil;
 });
 
-// Buat kesalahan
+// Fungsi pembulatan ke angka penting (contoh sederhana)
+function keAngkaPenting(nilai, angkaPenting) {
+    if (nilai === 0) return 0;
+    const digit = Math.floor(Math.log10(Math.abs(nilai))) + 1;
+    const factor = Math.pow(10, angkaPenting - digit);
+    return Math.round(nilai * factor) / factor;
+}
 
+// Fungsi untuk menghitung ukuran terkecil
 function hitungUkuranTerkecil(angka){
-    const angkaStr = angka.toString();  // ini inputan dari penggunanya di ubah dlu jadi string
-    if (angkaStr.includes('.')) {  // disini diperiksa apakah ada titik desimal, kalau tidak ada berarti langsung ke return 1
-        // Jika ada desimal, kita hitung jumlah digit setelah titik 
-        const jumlahDesimal = angkaStr.split('.')[1].length; // memeriksa ada berapa angka setelah titik desimal   
-
+    const angkaStr = angka.toString();
+    if (angkaStr.includes('.')) {
+        const jumlahDesimal = angkaStr.split('.')[1].length;
         let pangkat10 = 1;
-        for (let i = 0; i < jumlahDesimal; i++) {  // ini untuk menentukan pangkat dari 10
-            pangkat10 *= 10;                       // misal desimalnya ada 2 digit, maka nilai pangkat10 = 100
+        for (let i = 0; i < jumlahDesimal; i++) {
+            pangkat10 *= 10;
         }
-
-        return 1 / pangkat10;       // nah disini kita bagi 1 dengan nilai pangkat10 yang sudah kita dapat contohnya 1/100 = 0.01
-    } else {                        
-        return 1;               // jika tidak ada desimal, ukuran terkecil adalah 1
+        return 1 / pangkat10;
+    } else {
+        return 1;
     }
 }
 
-
-
-// sudah selesai htung ukuran terkecil, sekarang kita buat fungsi untuk menghitung kesalahan dari nilai yang diberikan
+// Fungsi untuk menghitung kesalahan dari nilai yang diberikan
 function hitungKesalahanDariNilai(nilai) {
-    const ukuranTerkecil = hitungUkuranTerkecil(nilai); // ini untuk dapetin hasil dari satuan terkecil yang dihitung tadi
-    const salahMutlak = Math.abs(0.5 * ukuranTerkecil); // ini untuk dapetin nilai kesalahan mutlak, yaitu 0.5 * ukuran terkecil
-    const salahRelatif = salahMutlak / nilai; // ini untuk dapetin nilai kesalahan relatif  
-    const persenKesalahan = salahRelatif * (100 / 1); // ini untuk dapetin nilai persentase kesalahan
-    const batasAtas = nilai + salahMutlak; // ini untuk dapetin nilai batas atas, yaitu nilai + kesalahan mutlak
-    const batasBawah = nilai - salahMutlak; // ini untuk dapetin nilai batas bawah, yaitu nilai - kesalahan mutlak
+    const ukuranTerkecil = hitungUkuranTerkecil(nilai);
+    const salahMutlak = Math.abs(0.5 * ukuranTerkecil);
+    const salahRelatif = salahMutlak / nilai;
+    const persenKesalahan = salahRelatif * 100;
+    const batasAtas = nilai + salahMutlak;
+    const batasBawah = nilai - salahMutlak;
 
-    // terus semua hasil tadi kita kembalikan dalam bentuk objek
-    // supaya bisa diakses nanti di fungsi hitungKesalahan
     return {
         nilai,
         salahMutlak,
@@ -114,7 +116,6 @@ function hitungKesalahanDariNilai(nilai) {
         batasBawah,
     };
 }
-
 
 function hitungKesalahan() {
     let nilai1 = parseFloat(document.querySelector(".kesalahan-input").value);
@@ -164,15 +165,13 @@ function hitungKesalahan() {
     }
 
     const box = document.querySelector('.kesalahan-result-box');
-    console.log("box ditemukan:", box); // pastikan ini bukan null
     box.innerHTML = hasilHTML;
 
     document.querySelector('.kesalahan-input').value = "";
     document.querySelector('.kesalahan-input2').value = "";
 }
 
-// buat ganti tab-content
-
+// Tab kalkulator (tab-button dan tab-content)
 const tabButtons = document.querySelectorAll(".tab-button");
 const tabContents = document.querySelectorAll(".tab-content");
 
@@ -186,11 +185,65 @@ tabButtons.forEach((button) => {
 
     // Ganti konten aktif
     tabContents.forEach((content) => {
-      if (content.getAttribute("data-tab") === target) {
-        content.classList.add("active");
-      } else {
-        content.classList.remove("active");
-      }
-    });
-  });
+      content.classList.toggle("active", content.getAttribute("data-tab") === target);
+    });
+  });
+});
+
+// Dropdown Kalkulator interaktif & navigasi tab
+document.querySelectorAll('.calc-option').forEach(option => {
+  option.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Ambil nama tab dari data-tab
+    const tab = this.getAttribute('data-tab');
+
+    // Aktifkan tab-button yang sesuai
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tab);
+    });
+
+    // Aktifkan tab-content yang sesuai
+    document.querySelectorAll('.tab-content').forEach(tc => {
+      tc.classList.toggle('active', tc.getAttribute('data-tab') === tab);
+    });
+
+    // Scroll ke kalkulator
+    const kalkulatorSection = document.getElementById('kalkulator');
+    if (kalkulatorSection) {
+      kalkulatorSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Tutup dropdown
+    const calcDropdown = document.querySelector('.calc-dropdown');
+    if (calcDropdown) calcDropdown.classList.remove('open');
+  });
+});
+
+// Dropdown Kalkulator buka/tutup
+const calcDropdown = document.querySelector('.calc-dropdown');
+const calcDropdownBtn = document.querySelector('.calc-dropdown-btn');
+
+if (calcDropdown && calcDropdownBtn) {
+  calcDropdownBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    calcDropdown.classList.toggle('open');
+    e.stopPropagation();
+  });
+
+  // Tutup dropdown jika klik di luar
+  document.addEventListener('click', function() {
+    calcDropdown.classList.remove('open');
+  });
+}
+// Smooth scroll untuk link footer (dan nav) yang menuju anchor di halaman
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href').slice(1);
+    const target = document.getElementById(targetId);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
