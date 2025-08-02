@@ -149,6 +149,14 @@ a {
   gap: 40px;
 }
 
+.tab-content{
+  display: none;
+}
+
+.tab-content.active{
+  display: block;
+}
+
 .content-left {
   flex: 1;
 }
@@ -221,7 +229,8 @@ a {
   position: relative;
 }
 
-.calculator-input, .calculator-select {
+.calculator-input, .calculator-select,
+.kesalahan-input, .kesalahan-input2 {
   width: 100%;
   padding: 14px 20px;
   border: 1px solid #ddd;
@@ -270,8 +279,9 @@ a {
   margin-bottom: 8px;
 }
 
-.result-box {
-  height: 120px;
+.result-box, .kesalahan-result-box {
+  min-height: 120px;
+  max-height: auto;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 10px;
