@@ -17,6 +17,24 @@ function keSatuanTerdekat(nilai) {
         return Number(bil);
     };
 }
+function keDesimalTertentu(nilai, desimal) {
+    let rasio = nilai / desimal;
+    let strRasio = rasio.toString();
+    let bagianBulat = " ";
+    let bagiandesimal = 0;
+    if (strRasio.includes(".")) {
+        letBagian = strRasio.split(".");
+        bagianBulat = bagian[0]; // bagian depan titik
+        bagiandesimal = Number("0." + bagian[1]); // bagian setelah titik
+    } else {
+        bagianBulat = strRasio; // sudah bulat
+        bagianDesimal= 0;
+    } 
+    if (bagiandesimal >= 0.5) {
+        return (Number(bagianBulat) + 1) * desimal;
+    } else {
+        return Number(bagianBulat) * desimal;}
+    }
 
 // Event listener tombol hitung
 document.querySelector('.calculate-button').addEventListener('click', function() {
@@ -28,7 +46,9 @@ document.querySelector('.calculate-button').addEventListener('click', function()
     // Jalankan fungsi jika opsi "Kesatuan Terdekat"
     if (opsi === 'Kesatuan Terdekat') {
         hasil = keSatuanTerdekat(Number(input));
-    }
+    } else if (opsi === 'Ke Desimal Tertentu') {
+        hasil = keDesimalTertentu(Number(input), Number(opsi));
+    } 
 
     // Tampilkan hasil ke .result-box
     let resultBox = document.querySelector('.result-box');
