@@ -38,43 +38,6 @@ function keDesimalTertentu(nilai, desimal) {
     }
 }
 
-// Tampilkan input dinamis saat opsi berubah
-document.querySelector('.calculator-select').addEventListener('change', function() {
-    const opsi = this.value;
-    const dynamicInput = document.querySelector('.dynamic-input');
-    dynamicInput.innerHTML = '';
-
-    if (opsi === 'Ke Desimal Tertentu') {
-        dynamicInput.innerHTML = `
-            <input type="number" min="0" class="calculator-input input-desimal" placeholder="Masukkan jumlah desimal" />
-        `;
-    } else if (opsi === 'Ke Angka Penting') {
-        dynamicInput.innerHTML = `
-            <input type="number" min="1" class="calculator-input input-signifikan" placeholder="Masukkan angka penting" />
-        `;
-    }
-});
-
-// Event listener tombol hitung
-document.querySelector('.calculate-button').addEventListener('click', function() {
-    const input = document.querySelector('.calculator-input').value;
-    const opsi = document.querySelector('.calculator-select').value;
-    let hasil = '';
-
-    if (opsi === 'Kesatuan Terdekat') {
-        hasil = keSatuanTerdekat(Number(input));
-    } else if (opsi === 'Ke Desimal Tertentu') {
-        const desimal = document.querySelector('.input-desimal')?.value || 0;
-        hasil = Number(input).toFixed(Number(desimal));
-    } else if (opsi === 'Ke Angka Penting') {
-        const signifikan = document.querySelector('.input-signifikan')?.value || 1;
-        hasil = keAngkaPenting(Number(input), Number(signifikan));
-    }
-
-    let resultBox = document.querySelector('.result-box');
-    if (resultBox) resultBox.textContent = hasil;
-});
-
 // Fungsi pembulatan ke angka penting (contoh sederhana)
 function keAngkaPenting(nilai, angkaPenting) {
     if (nilai === 0) return 0;
@@ -170,6 +133,42 @@ function hitungKesalahan() {
     document.querySelector('.kesalahan-input').value = "";
     document.querySelector('.kesalahan-input2').value = "";
 }
+// Tampilkan input dinamis saat opsi berubah
+document.querySelector('.calculator-select').addEventListener('change', function() {
+    const opsi = this.value;
+    const dynamicInput = document.querySelector('.dynamic-input');
+    dynamicInput.innerHTML = '';
+
+    if (opsi === 'Ke Desimal Tertentu') {
+        dynamicInput.innerHTML = `
+            <input type="number" min="0" class="calculator-input input-desimal" placeholder="Masukkan jumlah desimal" />
+        `;
+    } else if (opsi === 'Ke Angka Penting') {
+        dynamicInput.innerHTML = `
+            <input type="number" min="1" class="calculator-input input-signifikan" placeholder="Masukkan angka penting" />
+        `;
+    }
+});
+
+// Event listener tombol hitung
+document.querySelector('.calculate-button').addEventListener('click', function() {
+    const input = document.querySelector('.calculator-input').value;
+    const opsi = document.querySelector('.calculator-select').value;
+    let hasil = '';
+
+    if (opsi === 'Kesatuan Terdekat') {
+        hasil = keSatuanTerdekat(Number(input));
+    } else if (opsi === 'Ke Desimal Tertentu') {
+        const desimal = document.querySelector('.input-desimal')?.value || 0;
+        hasil = Number(input).toFixed(Number(desimal));
+    } else if (opsi === 'Ke Angka Penting') {
+        const signifikan = document.querySelector('.input-signifikan')?.value || 1;
+        hasil = keAngkaPenting(Number(input), Number(signifikan));
+    }
+
+    let resultBox = document.querySelector('.result-box');
+    if (resultBox) resultBox.textContent = hasil;
+});
 
 // Tab kalkulator (tab-button dan tab-content)
 const tabButtons = document.querySelectorAll(".tab-button");
