@@ -486,6 +486,14 @@ a {
   margin-bottom: 24px;
 }
 
+.content-right h4{
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+}
+
 .learning-card {
   margin-bottom: 32px;
 }

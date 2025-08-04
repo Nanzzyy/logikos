@@ -64,7 +64,7 @@ function hitungUkuranTerkecil(angka){
 // Fungsi untuk menghitung kesalahan dari nilai yang diberikan
 function hitungKesalahanDariNilai(nilai) {
     const ukuranTerkecil = hitungUkuranTerkecil(nilai);
-    const salahMutlak = Math.abs(0.5 * ukuranTerkecil);
+    const salahMutlak = 0.5 * ukuranTerkecil;
     const salahRelatif = salahMutlak / nilai;
     const persenKesalahan = salahRelatif * 100;
     const batasAtas = nilai + salahMutlak;
@@ -80,6 +80,19 @@ function hitungKesalahanDariNilai(nilai) {
     };
 }
 
+function hitungJumlahDesimal(nilai){
+    const nilaiStr = nilai.toString();
+    if (nilaiStr.includes('.')) {
+        return nilaiStr.split('.')[1].length;
+    }
+    return 0;
+}
+
+function desimalMaks5(nilai) {
+    const desimal = hitungJumlahDesimal(nilai);
+    return desimal > 5 ? 5 : desimal;
+}
+
 function hitungKesalahan() {
     let nilai1 = parseFloat(document.querySelector(".kesalahan-input").value);
     let nilai2 = parseFloat(document.querySelector(".kesalahan-input2").value);
@@ -92,29 +105,30 @@ function hitungKesalahan() {
     const hasil1 = isNaN(nilai1) ? null : hitungKesalahanDariNilai(nilai1);
     const hasil2 = isNaN(nilai2) ? null : hitungKesalahanDariNilai(nilai2);
 
+
     let hasilHTML = "";
 
     if (hasil1) {
         hasilHTML += `
-        <h3>Hasil Pengukuran 1:</h3>
+        <h4>Hasil Pengukuran 1:</h4>
         <p>Angka: ${hasil1.nilai}</p>
-        <p>Salah Mutlak: ${hasil1.salahMutlak.toFixed(2)}</p>
-        <p>Salah Relatif: ${hasil1.salahRelatif.toFixed(4)}</p>
-        <p>Persentase Kesalahan: ${hasil1.persenKesalahan.toFixed(4)}%</p>
-        <p>Batas Atas: ${hasil1.batasAtas.toFixed(2)}</p>
-        <p>Batas Bawah: ${hasil1.batasBawah.toFixed(2)}</p>
+        <p>Salah Mutlak: ${hasil1.salahMutlak.toFixed(desimalMaks5(hasil1.salahMutlak))}</p>
+        <p>Salah Relatif: ${hasil1.salahRelatif.toFixed(desimalMaks5(hasil1.salahRelatif))}</p>
+        <p>Persentase Kesalahan: ${hasil1.persenKesalahan.toFixed(desimalMaks5(hasil1.persenKesalahan))}%</p>
+        <p>Batas Atas: ${hasil1.batasAtas.toFixed(desimalMaks5(hasil1.batasAtas))}</p>
+        <p>Batas Bawah: ${hasil1.batasBawah.toFixed(desimalMaks5(hasil1.batasBawah))}</p>
         <br>`;
     }
 
     if (hasil2) {
         hasilHTML += `
-        <h3>Hasil Pengukuran 2:</h3>
+        <h4>Hasil Pengukuran 1:</h4>
         <p>Angka: ${hasil2.nilai}</p>
-        <p>Salah Mutlak: ${hasil2.salahMutlak.toFixed(2)}</p>
-        <p>Salah Relatif: ${hasil2.salahRelatif.toFixed(4)}</p>
-        <p>Persentase Kesalahan: ${hasil2.persenKesalahan.toFixed(4)}%</p>
-        <p>Batas Atas: ${hasil2.batasAtas.toFixed(2)}</p>
-        <p>Batas Bawah: ${hasil2.batasBawah.toFixed(2)}</p>
+        <p>Salah Mutlak: ${hasil1.salahMutlak.toFixed(desimalMaks5(hasil2.salahMutlak))}</p>
+        <p>Salah Relatif: ${hasil1.salahRelatif.toFixed(desimalMaks5(hasil2.salahRelatif))}</p>
+        <p>Persentase Kesalahan: ${hasil1.persenKesalahan.toFixed(desimalMaks5(hasil2.persenKesalahan))}%</p>
+        <p>Batas Atas: ${hasil1.batasAtas.toFixed(desimalMaks5(hasil2.batasAtas))}</p>
+        <p>Batas Bawah: ${hasil1.batasBawah.toFixed(desimalMaks5(hasil2.batasBawah))}</p>
         <br>`;
     }
 
@@ -122,9 +136,26 @@ function hitungKesalahan() {
         const hasilKaliMaks = hasil1.batasAtas * hasil2.batasAtas;
         const hasilKaliMin = hasil1.batasBawah * hasil2.batasBawah;
 
+        const hasilBagiMaks = hasil1.batasAtas / hasil2.batasAtas;
+        const hasilBagiMin = hasil1.batasBawah / hasil2.batasBawah;
+
+        const hasilTambahMaks = hasil1.batasAtas + hasil2.batasAtas;
+        const hasilTambahMin = hasil1.batasBawah + hasil2.batasBawah;
+
+        const hasilKurangMaks = hasil1.batasAtas - hasil2.batasAtas;
+        const hasilKurangMin = hasil1.batasBawah - hasil2.batasBawah;
+
         hasilHTML += `
-        <p>Hasil Kali Maksimal: ${hasilKaliMaks.toFixed(4)}</p>
-        <p>Hasil Kali Minimal: ${hasilKaliMin.toFixed(4)}</p>`;
+        <h4>Hasil Operasi:</h4>
+        <p>Hasil Kali Maksimal: ${hasilKaliMaks.toFixed(desimalMaks5(hasilKaliMaks))}</p>
+        <p>Hasil Kali Minimal: ${hasilKaliMin.toFixed(desimalMaks5(hasilKaliMin))}</p>
+        <p>Hasil Bagi Maksimal: ${hasilBagiMaks.toFixed(desimalMaks5(hasilBagiMaks))}</p>
+        <p>Hasil Bagi Minimal: ${hasilBagiMin.toFixed(desimalMaks5(hasilBagiMin))}</p>
+        <p>Hasil Tambah Maksimal: ${hasilTambahMaks.toFixed(desimalMaks5(hasilTambahMaks))}</p>
+        <p>Hasil Tambah Minimal: ${hasilTambahMin.toFixed(desimalMaks5(hasilTambahMin))}</p>
+        <p>Hasil Kurang Maksimal: ${hasilKurangMaks.toFixed(desimalMaks5(hasilKurangMaks))}</p>
+        <p>Hasil Kurang Minimal: ${hasilKurangMin.toFixed(desimalMaks5(hasilKurangMin))}</p>
+        <br>`;
     }
 
     const box = document.querySelector('.kesalahan-result-box');
