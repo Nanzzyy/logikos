@@ -104,6 +104,7 @@ function hitungKesalahanDariNilai(nilai) {
     const persenKesalahan = salahRelatif * 100;
     const batasAtas = nilai + salahMutlak;
     const batasBawah = nilai - salahMutlak;
+    const toleransi = batasAtas - batasBawah;
 
     return {
         nilai,
@@ -112,6 +113,7 @@ function hitungKesalahanDariNilai(nilai) {
         persenKesalahan,
         batasAtas,
         batasBawah,
+        toleransi
     };
 }
 
@@ -152,6 +154,7 @@ function hitungKesalahan() {
         <p>Persentase Kesalahan: ${hasil1.persenKesalahan.toFixed(desimalMaks5(hasil1.persenKesalahan))}%</p>
         <p>Batas Atas: ${hasil1.batasAtas.toFixed(desimalMaks5(hasil1.batasAtas))}</p>
         <p>Batas Bawah: ${hasil1.batasBawah.toFixed(desimalMaks5(hasil1.batasBawah))}</p>
+        <p>Toleransi: ${hasil1.toleransi.toFixed(desimalMaks5(hasil1.toleransi))}</p>
         <br>`;
     }
 
@@ -164,6 +167,7 @@ function hitungKesalahan() {
         <p>Persentase Kesalahan: ${hasil2.persenKesalahan.toFixed(desimalMaks5(hasil2.persenKesalahan))}%</p>
         <p>Batas Atas: ${hasil2.batasAtas.toFixed(desimalMaks5(hasil2.batasAtas))}</p>
         <p>Batas Bawah: ${hasil2.batasBawah.toFixed(desimalMaks5(hasil2.batasBawah))}</p>
+        <p>Toleransi: ${hasil2.toleransi.toFixed(desimalMaks5(hasil2.toleransi))}</p>
         <br>`;
     }
 
