@@ -37,13 +37,32 @@ function keDesimalTertentu(nilai, desimal) {
         return Number(bagianBulat) * desimal;
     }
 }
-
-// Fungsi pembulatan ke angka penting (contoh sederhana)
+// Fungsi untuk pembulatan ke angka penting
 function keAngkaPenting(nilai, angkaPenting) {
     if (nilai === 0) return 0;
-    const digit = Math.floor(Math.log10(Math.abs(nilai))) + 1;
-    const factor = Math.pow(10, angkaPenting - digit);
-    return Math.round(nilai * factor) / factor;
+
+    // Hitung digit tanpa Math.abs dan Math.log10
+    let temp = nilai < 0 ? -nilai : nilai;
+    let digit = 0;
+    while (temp >= 1) {
+        temp = temp / 10;
+        digit++;
+    }
+    if (digit === 0) digit = 1;
+
+    // Hitung factor tanpa Math.pow
+    let factor = 1;
+    let pangkat = angkaPenting - digit;
+    if (pangkat > 0) {
+        for (let i = 0; i < pangkat; i++) factor *= 10;
+    } else if (pangkat < 0) {
+        for (let i = 0; i < -pangkat; i++) factor /= 10;
+    }
+
+    // Pembulatan tanpa Math.round
+    let hasil = nilai * factor;
+    hasil = hasil < 0 ? (parseInt(hasil - 0.5)) : (parseInt(hasil + 0.5));
+    return hasil / factor;
 }
 
 // Fungsi untuk menghitung ukuran terkecil
@@ -122,13 +141,13 @@ function hitungKesalahan() {
 
     if (hasil2) {
         hasilHTML += `
-        <h4>Hasil Pengukuran 1:</h4>
+        <h4>Hasil Pengukuran 2:</h4>
         <p>Angka: ${hasil2.nilai}</p>
-        <p>Salah Mutlak: ${hasil1.salahMutlak.toFixed(desimalMaks5(hasil2.salahMutlak))}</p>
-        <p>Salah Relatif: ${hasil1.salahRelatif.toFixed(desimalMaks5(hasil2.salahRelatif))}</p>
-        <p>Persentase Kesalahan: ${hasil1.persenKesalahan.toFixed(desimalMaks5(hasil2.persenKesalahan))}%</p>
-        <p>Batas Atas: ${hasil1.batasAtas.toFixed(desimalMaks5(hasil2.batasAtas))}</p>
-        <p>Batas Bawah: ${hasil1.batasBawah.toFixed(desimalMaks5(hasil2.batasBawah))}</p>
+        <p>Salah Mutlak: ${hasil2.salahMutlak.toFixed(desimalMaks5(hasil2.salahMutlak))}</p>
+        <p>Salah Relatif: ${hasil2.salahRelatif.toFixed(desimalMaks5(hasil2.salahRelatif))}</p>
+        <p>Persentase Kesalahan: ${hasil2.persenKesalahan.toFixed(desimalMaks5(hasil2.persenKesalahan))}%</p>
+        <p>Batas Atas: ${hasil2.batasAtas.toFixed(desimalMaks5(hasil2.batasAtas))}</p>
+        <p>Batas Bawah: ${hasil2.batasBawah.toFixed(desimalMaks5(hasil2.batasBawah))}</p>
         <br>`;
     }
 
