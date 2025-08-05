@@ -39,31 +39,47 @@ function keDesimalTertentu(nilai, desimal) {
 }
 // Fungsi untuk pembulatan ke angka penting
 function keAngkaPenting(nilai, angkaPenting) {
-    if (nilai === 0) return 0;
+    // Ubah ke nilai positif untuk perhitungan
+let positif = nilai < 0 ? -nilai : nilai;
 
-    // Hitung digit tanpa Math.abs dan Math.log10
-    let temp = nilai < 0 ? -nilai : nilai;
-    let digit = 0;
-    while (temp >= 1) {
+// Hitung eksponen: berapa kali dikali atau dibagi 10 agar menjadi 1 <= x < 10
+let digit = 0;
+if (positif >= 1) {
+    let temp = positif;
+    while (temp >= 10) {
         temp = temp / 10;
         digit++;
     }
-    if (digit === 0) digit = 1;
-
-    // Hitung factor tanpa Math.pow
-    let factor = 1;
-    let pangkat = angkaPenting - digit;
-    if (pangkat > 0) {
-        for (let i = 0; i < pangkat; i++) factor *= 10;
-    } else if (pangkat < 0) {
-        for (let i = 0; i < -pangkat; i++) factor /= 10;
+} else {
+    let temp = positif;
+    while (temp < 1) {
+        temp = temp * 10;
+        digit--;
     }
-
-    // Pembulatan tanpa Math.round
-    let hasil = nilai * factor;
-    hasil = hasil < 0 ? (parseInt(hasil - 0.5)) : (parseInt(hasil + 0.5));
-    return hasil / factor;
 }
+
+// Hitung pengali (tanpa Math.pow)
+let pangkat = angkaPenting - 1 - digit;
+let faktor = 1;
+
+if (pangkat > 0) {
+    for (let i = 0; i < pangkat; i++) faktor *= 10;
+} else if (pangkat < 0) {
+    for (let i = 0; i < -pangkat; i++) faktor /= 10;
+}
+
+// Pembulatan manual tanpa Math.round
+let hasil = nilai * faktor;
+if (hasil >= 0) {
+    hasil = parseInt(hasil + 0.5);
+} else {
+    hasil = parseInt(hasil - 0.5);
+}
+
+return hasil / faktor;
+
+}
+
 
 // Fungsi untuk menghitung ukuran terkecil
 function hitungUkuranTerkecil(angka){
